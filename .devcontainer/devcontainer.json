@@ -1,0 +1,13 @@
+{
+  "name": "ROS-102 (Jazzy Jalisco)",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "jazzy_jalisco",
+  "workspaceFolder": "/workspaces/ros-102",
+  "shutdownAction": "stopContainer",
+
+  "overrideCommand": true,
+
+  // avoid Zed agent to use root user
+  "containerUser": "ubuntu",
+  "remoteUser": "ubuntu"
+}
