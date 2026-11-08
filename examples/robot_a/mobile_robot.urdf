@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<robot name="MobileRobot">
+  <!-- Defining material for wheel and body -->
+  <material name="green"> <color rgba="0 0.5 0 1" /> </material>
+  <material name="gray"> <color rgba="0.5 0.5 0.5 1" /> </material>
+
+  <!-- Link 1 (robot body) ================================================= -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.6 0.4 0.2" />
+      </geometry>
+
+      <origin xyz="0 0 0.1" rpy="0 0 0" />
+      <material name="green" />
+    </visual>
+  </link>
+
+  <!-- Link 2, 3, 4, 5 (robot wheels) ====================================== -->
+  <link name="front_right">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05" />
+      </geometry>
+
+      <!-- rotate the wheel along x axis by 90 degree -->
+      <origin xyz="0 0 0" rpy="1.5707963 0 0" />
+      <material name="gray" />
+    </visual>
+  </link>
+
+
+  <link name="front_left">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05" />
+      </geometry>
+
+      <!-- rotate the wheel along x axis by 90 degree -->
+      <origin xyz="0 0 0" rpy="1.5707963 0 0" />
+      <material name="gray" />
+    </visual>
+  </link>
+
+
+  <link name="back_right">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05" />
+      </geometry>
+
+      <!-- rotate the wheel along x axis by 90 degree -->
+      <origin xyz="0 0 0" rpy="1.5707963 0 0" />
+      <material name="gray" />
+    </visual>
+  </link>
+
+
+  <link name="back_left">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05" />
+      </geometry>
+
+      <!-- rotate the wheel along x axis by 90 degree -->
+      <origin xyz="0 0 0" rpy="1.5707963 0 0" />
+      <material name="gray" />
+    </visual>
+  </link>
+
+
+  <!-- Joint 1, 2, 3, 4 (robot joints) ===================================== -->
+  <joint name="base_front_right" type="continuous">
+    <parent link="base_link" />
+    <child link="front_right" />
+
+    <origin xyz="0.17 0.2 0" rpy="0 0 0" />
+
+    <!-- Rotational axis -->
+    <axis xyz="0 1 0" />
+  </joint>
+
+
+  <joint name="base_front_left" type="continuous">
+    <parent link="base_link" />
+    <child link="front_left" />
+
+    <origin xyz="0.17 -0.2 0" rpy="0 0 0" />
+    <!-- Rotational axis -->
+    <axis xyz="0 1 0" />
+  </joint>
+
+
+  <joint name="base_back_right" type="continuous">
+    <parent link="base_link" />
+    <child link="back_right" />
+
+    <origin xyz="-0.17 0.2 0" rpy="0 0 0" />
+    <!-- Rotational axis -->
+    <axis xyz="0 1 0" />
+  </joint>
+
+
+  <joint name="base_back_left" type="continuous">
+    <parent link="base_link" />
+    <child link="back_left" />
+
+    <origin xyz="-0.17 -0.2 0" rpy="0 0 0" />
+    <!-- Rotational axis -->
+    <axis xyz="0 1 0" />
+  </joint>
+
+
+</robot>

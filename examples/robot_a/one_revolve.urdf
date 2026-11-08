@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<!-- Specify the name of the Robot -->
+<robot name="RobotA2">
+
+  <!-- let's define some colours -->
+  <material name="green"> <color rgba="0 0.5 0 1" /> </material>
+  <material name="gray"> <color rgba="0.5 0.5 0.5 1" /> </material>
+
+  <!-- Link 1 (base link) ================================================== -->
+  <link name="base_link">
+
+    <!-- specify the appearance of robot -->
+    <visual>
+      <geometry>
+        <!-- length, breadth, height (in meters) -->
+        <box size="0.6 0.4 0.2" />
+      </geometry>
+
+      <!-- by default, the origin is at the center of the box -->
+      <!-- to place the box on the ground, set z to half of box's height -->
+      <origin xyz="0 0 0.1" rpy="0 0 0" />
+
+      <!-- specify color of the box -->
+      <material name="green" />
+    </visual>
+  </link>
+
+
+  <!-- Link 2 ============================================================== -->
+  <link name="second_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.2" />
+      </geometry>
+
+      <!-- by default, the origin of all links is at it's center and the -->
+      <!-- placement of links is such that the center is placed at this position -->
+      <origin xyz="0 0 0.1" rpy="0 0 0" />
+
+      <material name="gray" />
+    </visual>
+  </link>
+
+
+  <!-- Joint 1 (connect link 1 and link 2) ================================= -->
+  <joint name="link_1_2_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="second_link" />
+
+    <!-- Whenever the origin of the joint is moved, then the child's origin -->
+    <!-- (second link) also get moved to the new origin. Based on below, the -->
+    <!-- the placement of second link is at (0, 0, 0.2) -->
+    <origin xyz="0 0 0.2" rpy="0 0 0" />
+
+    <!-- Axis of rotation for second link -->
+    <!-- here, second_link revolve along Z axis -->
+    <axis xyz="0 0 1" />
+
+    <!-- Specify the limits of revolution -->
+    <!-- lower, upper - how much it can revolve (in radians) -->
+    <!-- velocity - how fast it's revolving (in radians per second) -->
+    <!-- effort - how much force needed to make it revolve (in Newton Meter) -->
+    <limit lower="-1.57" upper="1.57" effort="100" velocity="100" />
+  </joint>
+
+</robot>
+
+
+
+<!-- To view this Robot in RViz, run -->
+<!-- ros2 launch urdf_tutorial display.launch.py model:=$(pwd)/robot_a.urdf -->

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!-- Box + cylinder + Box -->
+
+<robot name="robotA1">
+  <!-- defining some colours -->
+  <material name="green"> <color rgba="0 0.5 0 1" /> </material>
+  <material name="blue"> <color rgba="0 0 0.5 1" /> </material>
+  <material name="gray"> <color rgba="0.5 0.5 0.5 1" /> </material>
+
+  <!-- Link 1 (base link) ================================================== -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.6 0.6 0.6" />
+      </geometry>
+
+      <origin xyz="0 0 0.3" rpy="0 0 0" />
+      <material name="green" />
+    </visual>
+  </link>
+
+  <!-- Link 2 (second link) ================================================ -->
+  <link name="second_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.4" />
+      </geometry>
+
+      <origin xyz="0 0 0.2" rpy="0 0 0" />
+      <material name="blue" />
+    </visual>
+  </link>
+
+  <!-- Link 3 (third link) ================================================= -->
+  <link name="third_link">
+    <visual>
+      <geometry>
+        <box size="0.4 0.4 0.4" />
+      </geometry>
+
+      <origin xyz="0 0 0.2" rpy="0 0 0" />
+      <material name="gray" />
+    </visual>
+  </link>
+
+
+
+  <!-- Joint 2 (connect link 2 and link 3) ================================= -->
+  <joint name="joint_base_two" type="fixed">
+    <parent link="base_link" />
+    <child link="second_link" />
+
+    <origin xyz="0 0 0.6" rpy="0 0 0" />
+  </joint>
+
+  <!-- Joint 1 (connect link 1 and link 2) ================================= -->
+  <joint name="joint_second_third" type="fixed">
+    <parent link="second_link" />
+    <child link="third_link" />
+
+    <origin xyz="0 0 0.4" rpy="0 0 0" />
+  </joint>
+
+
+</robot>
