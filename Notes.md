@@ -58,7 +58,12 @@ sudo apt install ros-jazzy-urdf-tutorial
 
 # run a urdf tutorial to view robot in RViz
 ros2 launch urdf_tutorial display.launch.py model:=/opt/ros/jazzy/share/urdf_tutorial/urdf/08-macroed.urdf.xacro
+
+# urdf_tutorial package can be used to visualize any urdf files just by passing
+# the urdf file path as argument to model
+ros2 launch urdf_tutorial display.launch.py model:=$(pwd)/robot_a.urdf
 ```
+
 
 
 ---
