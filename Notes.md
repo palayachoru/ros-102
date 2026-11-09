@@ -120,10 +120,36 @@ ros2 run rviz2 rviz2 -d rviz_config.rviz
 
 Xacro (XML Macro)
 -----------------
-- used to simplify the URDF files by adding variables etc.
+- used to simplify the URDF files by adding variables, macro functions etc.
+- xacro also helps to split urdf files in to multiple file and group it in one main file
+
 
 To create a xacro file
 - file extension - *.xacro
 - add this xmlns:xacro="http://www.ros.org/wiki/xacro"  in robot tag next to name
+
+```xml
+<!-- Creating an XML Macro function -->
+<xacro:macro name="function_name" params="param1 param2">
+  <!-- function body -->
+</xacro:macro>
+
+<!-- For calling the macro function -->
+<xacro:function_name param1="value1" param2="value2" />
+```
+
+- xacro files can be splitup in to multiple files and can be included in one main file
+
+```xml
+<!-- to include another xacro file -->
+<xacro:include filename="filename.xacro" />
+```
+
+How to generate urdf file from xacro file?
+```bash
+xacro filename.xacro -o filename.urdf
+```
+
+
 
 ---

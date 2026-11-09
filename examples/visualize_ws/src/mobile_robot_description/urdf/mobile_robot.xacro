@@ -1,10 +1,9 @@
 <?xml version="1.0" ?>
 
 <robot name="MobileRobotCasterWheel" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <!-- Defining material for wheel and body -->
-  <material name="green"> <color rgba="0 0.5 0 1" /> </material>
-  <material name="gray"> <color rgba="0.5 0.5 0.5 1" /> </material>
-  <material name="black"> <color rgba="0 0 0 1" /> </material>
+  <!-- Include another xacro file -->
+  <xacro:include filename="materials.xacro" />
+
 
   <!-- Dimensions of Chassis & Wheel -->
   <xacro:property name="length" value="0.6" />
@@ -14,6 +13,22 @@
   <xacro:property name="w_radius" value="0.1" />
   <xacro:property name="w_length" value="0.05" />
   <xacro:property name="c_radius" value="0.05" />
+
+  <!-- MAcro function to generate wheels -->
+  <xacro:macro name="generate_wheel_link" params="wheel_name">
+    <link name="${wheel_name}">
+      <visual>
+        <geometry>
+          <cylinder radius="${w_radius}" length="${w_length}" />
+        </geometry>
+
+        <!-- pi is defined in xacro -->
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+        <material name="black" />
+      </visual>
+    </link>
+  </xacro:macro>
+
 
 
   <!-- Base Link =========================================================== -->
@@ -34,29 +49,8 @@
 
 
   <!-- Wheels Link ========================================================= -->
-  <link name="right_wheel">
-    <visual>
-      <geometry>
-        <cylinder radius="${w_radius}" length="${w_length}" />
-      </geometry>
-
-      <!-- pi is defined in xacro -->
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
-      <material name="black" />
-    </visual>
-  </link>
-
-
-  <link name="left_wheel">
-    <visual>
-      <geometry>
-        <cylinder radius="${w_radius}" length="${w_length}" />
-      </geometry>
-
-      <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
-      <material name="black" />
-    </visual>
-  </link>
+  <xacro:generate_wheel_link wheel_name="right_wheel" />
+  <xacro:generate_wheel_link wheel_name="left_wheel" />
 
 
 <!-- Castor Wheel Link ===================================================== -->

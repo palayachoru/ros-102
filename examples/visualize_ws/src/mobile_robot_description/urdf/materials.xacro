@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Defining material for wheel and body -->
+  <material name="green"> <color rgba="0 0.5 0 1" /> </material>
+  <material name="gray"> <color rgba="0.5 0.5 0.5 1" /> </material>
+  <material name="black"> <color rgba="0 0 0 1" /> </material>
+</robot>
