@@ -1,5 +1,5 @@
 <launch>
-  <let name="urdf_path" value="$(find-pkg-share mobile_robot_description)/urdf/mobile_robot.urdf" />
+  <let name="urdf_path" value="$(find-pkg-share mobile_robot_description)/urdf/mobile_robot.xacro" />
 
   <!-- Start robot_state_publisher node by passing urdf file -->
   <node pkg="robot_state_publisher" exec="robot_state_publisher">

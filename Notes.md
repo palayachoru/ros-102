@@ -118,4 +118,12 @@ ros2 run rviz2 rviz2 -d rviz_config.rviz
 ```
 
 
+Xacro (XML Macro)
+-----------------
+- used to simplify the URDF files by adding variables etc.
+
+To create a xacro file
+- file extension - *.xacro
+- add this xmlns:xacro="http://www.ros.org/wiki/xacro"  in robot tag next to name
+
 ---
